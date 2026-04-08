@@ -3,12 +3,12 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public final class Venda {
+public class Venda {
     int qtd;
     double total;
     LocalDate data;
     DateTimeFormatter formatoBR = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
+    
     public Venda(int qtd, double total, LocalDate data){
         this.qtd=qtd;
         this.total=total;

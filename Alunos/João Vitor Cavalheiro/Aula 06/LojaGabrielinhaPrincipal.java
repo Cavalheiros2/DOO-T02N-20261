@@ -11,6 +11,7 @@ public class LojaGabrielinhaPrincipal {
 	static Scanner ler = new Scanner(System.in);
 	static List <Venda> vendas = new ArrayList<>();
 	static List <LocalDate> datasDeVenda = new ArrayList<>();
+	static List <Loja> lojas = new ArrayList<>();
 	static DateTimeFormatter formatoBR = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	static DateTimeFormatter formatoVM = DateTimeFormatter.ofPattern("MM/yyyy");
 
@@ -20,12 +21,14 @@ public class LojaGabrielinhaPrincipal {
 
 	private static void mostrarMenu() {
 		int escolha=1;
+		popular();
 		while (escolha != 0) {
 			System.out.println("-----Menu-----");
 			System.out.println("[1]-Calcular Preço Total da Compra");
 			System.out.println("[2]-Calcular Troco");
 			System.out.println("[3]-Consultar Historico de Vendas");
 			System.out.println("[4]-Consultar Historico de Vendas Dia/Mês");
+			System.out.println("[5]-Sistema RH");
 			System.out.println("[0]-Sair");
 			escolha = ler.nextInt();
 			ler.nextLine();
@@ -39,7 +42,100 @@ public class LojaGabrielinhaPrincipal {
 		case 2 -> calcularTroco();
 		case 3 -> historicoVendas();
 		case 4 -> historicoVendasDM();
+		case 5 -> escolhaLoja();
 		case 0 -> System.out.println("Obrigado por usar nosso sistema❤");
+		default -> System.out.println("Escolha uma opção válida do Menu");	
+		}
+	}
+
+	private static void escolhaLoja() {
+
+		int escolhaL;
+
+		System.out.println("Digite 1 para verificar a Matriz e 2 a Filial01");
+		escolhaL=ler.nextInt();
+		validarEscolhaL(escolhaL);
+	}
+
+	private static void validarEscolhaL(int escolhaL) {
+		switch (escolhaL) {
+			case 1 ->{ 
+				verificarMatriz();
+			}
+			case 2 ->{ 
+				verificarFilial01();
+			}
+			default ->System.out.println("Escolha uma opção válida");
+		}
+	}
+
+	private static void verificarFilial01() {
+		int escolhaF01=1;
+		while (escolhaF01 != 0) { 
+		System.out.println("-----Menu Filial-----");
+		System.out.println("[1]-Verificar Informações da Filial");
+		System.out.println("[2]-Verificar Funcionários");
+		System.out.println("[3]-Verificar Cliente");
+		System.out.println("[0]-Sair");
+		escolhaF01=ler.nextInt();
+		validarEscolhaF01(escolhaF01);	
+		}
+	}
+
+	private static void validarEscolhaF01(int escolhaF01) {
+		switch (escolhaF01) {
+			
+		case 1 ->{
+			lojas.get(1).apresentarLoja();
+		}
+		case 2 -> {
+			for (int i=0;i<lojas.get(1).vendedoresL.size() ;i++) {
+				lojas.get(1).vendedoresL.get(i).apresentarVendedor();
+			}
+		}
+		case 3 -> {
+			for (int i=0;i<lojas.get(1).clientesL.size() ;i++) {
+				lojas.get(1).clientesL.get(i).apresentarCliente();
+			}
+		}
+		case 0 -> System.out.println("");
+		default -> System.out.println("Escolha uma opção válida do Menu");	
+		}
+	}
+
+	private static void verificarMatriz() {
+		int escolhaM=1;
+		while (escolhaM != 0) { 
+			System.out.println("-----Menu Matriz-----");
+			System.out.println("[1]-Verificar Informações da Matriz");
+			System.out.println("[2]-Verificar Funcionários");
+			System.out.println("[3]-Verificar Cliente");
+			System.out.println("[0]-Sair");
+			escolhaM=ler.nextInt();
+			validarEscolhaM(escolhaM);
+		}
+	}
+
+	private static void validarEscolhaM(int escolhaM) {
+			switch (escolhaM) {
+			
+		case 1 ->{
+			lojas.get(0).apresentarLoja();
+			System.out.println("");
+		}
+		case 2 -> {
+			for (int i=0;i<lojas.get(0).vendedoresL.size() ;i++) {
+				lojas.get(0).vendedoresL.get(i).apresentarVendedor();
+				System.out.println("");
+			}
+		}
+		case 3 -> {
+			for (int i=0;i<lojas.get(0).clientesL.size() ;i++) {
+				lojas.get(0).clientesL.get(i).apresentarCliente();
+				System.out.println("");
+			}
+		}
+		case 0 -> System.out.println("");
 		default -> System.out.println("Escolha uma opção válida do Menu");	
 		}
 	}
@@ -178,6 +274,7 @@ public class LojaGabrielinhaPrincipal {
 				System.out.println("O valor total da compra foi de R$"+total);
 				Venda venda = new Venda(qtd2, total, dataVenda);
 				vendas.add(venda);
+
 			}else{
 				System.out.println("Está venda foi realizada no dia "+dataVenda.format(formatoBR));
 				System.out.println("O valor total da compra foi de R$"+total);
@@ -188,4 +285,120 @@ public class LojaGabrielinhaPrincipal {
 		default -> System.out.println("Escolha uma opção válida do Menu");
 		}
 	}
+
+	private static void popular(){
+
+		Loja matriz = new Loja("My Plant", 
+		"Gabrielina", 
+		"12.345.678/0001-95", 
+		"Cascavel", 
+		"Santa Rita", 
+		"Av:Iguaçu");
+
+		Loja filial01 = new Loja("My Plant01", 
+		"Gabrielina", 
+		"98.765.432/0001-10", 
+		"Capitão", 
+		"Centro", 
+		"Av:Tancredo Neves");
+
+		lojas.add(matriz);
+		lojas.add(filial01);
+
+		Cliente cliente1 = new Cliente("Leonardo Silva", 
+		18, 
+		"Cascavel", 
+		"Centro", 
+		"Av:Tancredo Neves");
+
+		Cliente cliente2 = new Cliente("João Vitor", 
+		40, 
+		"Cascavel", 
+		"Centro", 
+		"Av:Iguaçu");
+
+		Cliente cliente3 = new Cliente("Pedro Henrique", 
+		28, 
+		"Cascavel", 
+		"Vila Nova", 
+		"Rua Ibapora");
+
+		Cliente cliente4 = new Cliente("Otávio Capanema", 
+		20, 
+		"Capitão", 
+		"Santa Mônica", 
+		"Rua Gonsalves Dias");
+
+		Cliente cliente5 = new Cliente("Vanessa Silva", 
+		60, 
+		"Capitão", 
+		"Santa Rita", 
+		"Av:Iguaçu");
+
+		Cliente cliente6 = new Cliente("Guilerme Vieira", 
+		31, 
+		"Capitão", 
+		"Centro", 
+		"Av:Tancredo Neves");
+
+		matriz.AddCliente(cliente1);
+		matriz.AddCliente(cliente2);
+		matriz.AddCliente(cliente3);
+		filial01.AddCliente(cliente4);
+		filial01.AddCliente(cliente5);
+		filial01.AddCliente(cliente6);
+		
+
+		Vendedor vendedor1 = new Vendedor("Claudio", 
+			31, 
+			"", 
+			"Cascavel", 
+			"Centro", 
+			"Av:Tancredo Neves", 
+			1800, 
+			new double[]{1800.50, 1900.74, 2000.94});
+
+			Vendedor vendedor2 = new Vendedor("Vitor", 
+			22, 
+			"", 
+			"Cascavel", 
+			"Vila Nova", 
+			"Rua Ibapora", 
+			1800, 
+			new double[]{1890, 1901.90, 2030.78});
+
+			Vendedor vendedor3 = new Vendedor("Ines", 
+			30, 
+			"", 
+			"Cascavel", 
+			"Santa Mônica", 
+			"Rua Paraiba", 
+			2000, 
+			new double[]{2050.10, 2190.74, 2000.99});
+
+			Vendedor vendedor4 = new Vendedor("Carlos", 
+			25, 
+			"", 
+			"Capitão", 
+			"Santa Rita", 
+			"Av:Iguaçu", 
+			1800, 
+			new double[]{1840.50, 1930.64, 2000.35});
+
+			Vendedor vendedor5 = new Vendedor("Genesio", 
+			20, 
+			"", 
+			"Capitão", 
+			"Santa Mônica", 
+			"Av:Tancredo Neves", 
+			2000, 
+			new double[]{2100.50, 2010.74, 2000.50});
+
+			matriz.AddVendedor(vendedor1);
+			matriz.AddVendedor(vendedor2);
+			matriz.AddVendedor(vendedor3);
+			filial01.AddVendedor(vendedor4);
+			filial01.AddVendedor(vendedor5);
+	}
+	
 }
