@@ -72,7 +72,7 @@ public class LocadoraVeiculos {
     }
 
     private static void listarLocacoes() {
-        int x = 0;
+        int x = 1;
         for (int i = 0; i < locacoes.size(); i++) {
             x = x + i;
             System.out.println(+x + "° Locação");
@@ -81,7 +81,7 @@ public class LocadoraVeiculos {
     }
 
     private static void realizarDecolucao() {
-        int x = 0;
+        int x = 1;
         for (int i = 0; i < locacoes.size(); i++) {
             x = x + i;
             System.out.println(+x + "° Locação");
