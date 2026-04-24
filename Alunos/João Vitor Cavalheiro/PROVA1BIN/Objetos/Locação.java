@@ -70,7 +70,7 @@ public class Locação {
         cliente.apresentarCliente();
         veiculo.apresentarVeiculo();
         valorTotal();
-        System.out.println("A devolução já foi feita:"+isDevolucao());
+        System.out.println("A devolução já foi feita:" + isDevolucao());
     }
 
     public void realizarDevolucao() {

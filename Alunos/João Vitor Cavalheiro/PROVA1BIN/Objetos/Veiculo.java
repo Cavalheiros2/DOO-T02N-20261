@@ -3,7 +3,7 @@ package Objetos;
 public abstract class Veiculo {
     String placa;
     double valorDiario;
-    
+
     public Veiculo(String placa, double valorDiario) {
         this.placa = placa;
         this.valorDiario = valorDiario;
@@ -25,10 +25,10 @@ public abstract class Veiculo {
         this.valorDiario = valorDiario;
     }
 
-    public void apresentarVeiculo(){
+    public void apresentarVeiculo() {
         System.out.println("==========Veículo==========");
-        System.out.println("Placa: "+getPlaca());
-        System.out.println("Valor Diário: R$"+getValorDiario());
+        System.out.println("Placa: " + getPlaca());
+        System.out.println("Valor Diário: R$" + getValorDiario());
     }
 
     public abstract double getValorDiaria();

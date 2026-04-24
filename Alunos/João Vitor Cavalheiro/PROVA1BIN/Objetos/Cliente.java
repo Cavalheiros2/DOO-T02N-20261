@@ -1,7 +1,7 @@
 package Objetos;
 
 public class Cliente {
-    
+
     String nome;
     String cpf;
     String cnh;
@@ -36,9 +36,9 @@ public class Cliente {
         this.cnh = cnh;
     }
 
-    public void apresentarCliente(){
-        System.out.println("Nome: "+getNome());
-        System.out.println("CPF "+getCpf());
+    public void apresentarCliente() {
+        System.out.println("Nome: " + getNome());
+        System.out.println("CPF " + getCpf());
     }
 
 }

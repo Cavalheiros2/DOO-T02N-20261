@@ -18,11 +18,11 @@ public class Carro extends Veiculo {
     }
 
     @Override
-     public void apresentarVeiculo(){
+    public void apresentarVeiculo() {
         System.out.println("==========Veículo==========");
-        System.out.println("Placa: "+getPlaca());
-        System.out.println("Valor Diário: R$"+getValorDiario());
-        System.out.println("Este carro possui ar condicionado: "+isArcondicionado());
+        System.out.println("Placa: " + getPlaca());
+        System.out.println("Valor Diário: R$" + getValorDiario());
+        System.out.println("Este carro possui ar condicionado: " + isArcondicionado());
     }
 
     @Override

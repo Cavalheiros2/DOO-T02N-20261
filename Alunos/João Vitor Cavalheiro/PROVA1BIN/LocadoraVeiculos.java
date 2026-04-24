@@ -24,20 +24,20 @@ public class LocadoraVeiculos {
     }
 
     private static void mostrarMenu() {
-        int escolhaM=1;
-        while (escolhaM !=0) { 
-        System.out.println("==========Menu==========");
-        System.out.println("[1]-Cadastrar Cliente");
-        System.out.println("[2]-Cadastrar Veículo");
-        System.out.println("[3]-Cadastrar Locação");
-        System.out.println("[4]-Realizar Devolução");
-        System.out.println("[5]-Listar Locações");
-        System.out.println("[6]-Demonstração");
-        System.out.println("[0]-Sair");
-        escolhaM = ler.nextInt();
-        ler.nextLine();
+        int escolhaM = 1;
+        while (escolhaM != 0) {
+            System.out.println("==========Menu==========");
+            System.out.println("[1]-Cadastrar Cliente");
+            System.out.println("[2]-Cadastrar Veículo");
+            System.out.println("[3]-Cadastrar Locação");
+            System.out.println("[4]-Realizar Devolução");
+            System.out.println("[5]-Listar Locações");
+            System.out.println("[6]-Demonstração");
+            System.out.println("[0]-Sair");
+            escolhaM = ler.nextInt();
+            ler.nextLine();
 
-        validarEscolhaMenu(escolhaM);
+            validarEscolhaMenu(escolhaM);
 
         }
     }
@@ -89,8 +89,8 @@ public class LocadoraVeiculos {
         }
         System.out.println("Escolha uma locação para remover");
         int removLoca = ler.nextInt();
-        locacoes.get(removLoca-1).realizarDevolucao();
-        locacoes.get(removLoca-1).mostrarLocacao();
+        locacoes.get(removLoca - 1).realizarDevolucao();
+        locacoes.get(removLoca - 1).mostrarLocacao();
     }
 
     private static void cadastrarLocacao() {
@@ -115,7 +115,7 @@ public class LocadoraVeiculos {
         System.out.println("Selecione um Veiculo");
         int escV = ler.nextInt();
         ler.nextLine();
-        
+
         System.out.println("Digite a data de Locação desejada sendo realizada neste formato DD/MM/YYYY");
         String dataL = ler.nextLine();
         LocalDate dataLocacao = LocalDate.parse(dataL, formatoBR);
@@ -127,7 +127,8 @@ public class LocadoraVeiculos {
         datasDeDevolucao.add(dataDevolucao);
 
         if (locacoes.size() < 10) {
-            Locação locacao = new Locação(clientes.get(escC - 1), veiculos.get(escV - 1), dataLocacao, dataDevolucao, false);
+            Locação locacao = new Locação(clientes.get(escC - 1), veiculos.get(escV - 1), dataLocacao, dataDevolucao,
+                    false);
             locacoes.add(locacao);
             System.out.println("Locação feita com sucesso");
         } else {

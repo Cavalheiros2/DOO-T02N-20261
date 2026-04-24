@@ -17,11 +17,11 @@ public class Moto extends Veiculo {
     }
 
     @Override
-     public void apresentarVeiculo(){
+    public void apresentarVeiculo() {
         System.out.println("==========Veículo==========");
-        System.out.println("Placa: "+getPlaca());
-        System.out.println("Valor Diário: R$"+getValorDiario());
-        System.out.println("Esta moto possui "+getCilindradas()+" cilindradas");
+        System.out.println("Placa: " + getPlaca());
+        System.out.println("Valor Diário: R$" + getValorDiario());
+        System.out.println("Esta moto possui " + getCilindradas() + " cilindradas");
     }
 
     @Override
