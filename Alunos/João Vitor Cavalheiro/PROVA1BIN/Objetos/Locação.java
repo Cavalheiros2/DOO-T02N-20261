@@ -1,8 +1,6 @@
 package Objetos;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Locação {
     Cliente cliente;
@@ -19,8 +17,6 @@ public class Locação {
         this.dataDevolucao = dataDevolucao;
         this.devolucao = devolucao;
     }
-
-    List<Locação> locacoes = new ArrayList<>();
 
     public boolean isDevolucao() {
         return devolucao;
@@ -60,10 +56,6 @@ public class Locação {
 
     public void setDataDevolucao(LocalDate dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
-    }
-
-    public void AddVeiculo(Locação locacao) {
-        locacoes.add(locacao);
     }
 
     public void valorTotal() {

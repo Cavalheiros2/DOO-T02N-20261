@@ -1,8 +1,5 @@
 package Objetos;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Cliente {
     
     String nome;
@@ -14,8 +11,6 @@ public class Cliente {
         this.cpf = cpf;
         this.cnh = cnh;
     }
-
-    List <Cliente> clientes = new ArrayList<>();
 
     public String getNome() {
         return nome;
@@ -39,10 +34,6 @@ public class Cliente {
 
     public void setCnh(String cnh) {
         this.cnh = cnh;
-    }
-
-    public void AddCliente(Cliente cliente){
-        clientes.add(cliente);
     }
 
     public void apresentarCliente(){

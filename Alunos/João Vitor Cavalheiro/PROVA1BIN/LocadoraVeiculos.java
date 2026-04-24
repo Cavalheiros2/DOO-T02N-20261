@@ -1,14 +1,13 @@
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 import Objetos.Carro;
 import Objetos.Cliente;
 import Objetos.Locação;
 import Objetos.Moto;
 import Objetos.Veiculo;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class LocadoraVeiculos {
 
@@ -25,7 +24,8 @@ public class LocadoraVeiculos {
     }
 
     private static void mostrarMenu() {
-        int escolhaM;
+        int escolhaM=1;
+        while (escolhaM !=0) { 
         System.out.println("==========Menu==========");
         System.out.println("[1]-Cadastrar Cliente");
         System.out.println("[2]-Cadastrar Veículo");
@@ -38,6 +38,8 @@ public class LocadoraVeiculos {
         ler.nextLine();
 
         validarEscolhaMenu(escolhaM);
+
+        }
     }
 
     private static void validarEscolhaMenu(int escolhaM) {
@@ -92,16 +94,17 @@ public class LocadoraVeiculos {
     }
 
     private static void cadastrarLocacao() {
-        int x = 0;
+        int x = 1;
         System.out.println("Selecione o cliente que deseja fazer a locação");
         for (int i = 0; i < clientes.size(); i++) {
             x = x + i;
             System.out.println(+x + "° Cliente");
             clientes.get(i).apresentarCliente();
         }
-        x = 0;
+        x = 1;
         System.out.println("Selecione um cliente");
         int escC = ler.nextInt();
+        ler.nextLine();
 
         System.out.println("Selecione o Veiculo que deseja utilizar");
         for (int i = 0; i < veiculos.size(); i++) {
@@ -111,7 +114,8 @@ public class LocadoraVeiculos {
         }
         System.out.println("Selecione um Veiculo");
         int escV = ler.nextInt();
-
+        ler.nextLine();
+        
         System.out.println("Digite a data de Locação desejada sendo realizada neste formato DD/MM/YYYY");
         String dataL = ler.nextLine();
         LocalDate dataLocacao = LocalDate.parse(dataL, formatoBR);
@@ -157,7 +161,7 @@ public class LocadoraVeiculos {
         int cilindrada = ler.nextInt();
         Moto moto = new Moto(placa, valDiario, cilindrada);
 
-        moto.AddVeiculo(moto);
+        veiculos.add(moto);
 
     }
 
@@ -170,7 +174,7 @@ public class LocadoraVeiculos {
         boolean yOn = ler.nextBoolean();
         Carro carro = new Carro(placa, valDiario, yOn);
 
-        carro.AddVeiculo(carro);
+        veiculos.add(carro);
 
     }
 
@@ -183,7 +187,7 @@ public class LocadoraVeiculos {
         String cnh = ler.nextLine();
         Cliente cliente = new Cliente(nome, cpf, cnh);
 
-        cliente.AddCliente(cliente);
+        clientes.add(cliente);
 
     }
 }
