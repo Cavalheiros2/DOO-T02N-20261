@@ -37,6 +37,7 @@ public class GerenciadorSerie {
         if (!usuario.getAssistidas().contains(serie)) {
 
             removerDesejaAssistir(serie);
+
             return usuario.getAssistidas().add(serie);
 
         }
@@ -53,6 +54,7 @@ public class GerenciadorSerie {
         if (!usuario.getDesejaAssistir().contains(serie)) {
 
             removerAssistida(serie);
+
             return usuario.getDesejaAssistir().add(serie);
 
         }

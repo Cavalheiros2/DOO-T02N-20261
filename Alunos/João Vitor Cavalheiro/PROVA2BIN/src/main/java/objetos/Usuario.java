@@ -11,6 +11,10 @@ public class Usuario {
     private List<Serie> assistidas;
     private List<Serie> desejaAssistir;
 
+    public Usuario() {
+ 
+    }
+
     public Usuario(String nome, String senha) {
         this.nome = nome;
         this.senha = senha;

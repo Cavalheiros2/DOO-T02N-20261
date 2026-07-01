@@ -55,22 +55,22 @@ public class PersistenciaJSON {
 
         List<Usuario> usuarios = carregarUsuarios();
 
-        for (Usuario usuario: usuarios) {
-            if(usuario != null){
+        for (Usuario usuario : usuarios) {
+            if (nome.equals(usuario.getNome())) {
                 return usuario;
             }
 
         }
         return null;
-        
+
     }
 
     public Usuario autenticar(String nome, String senha) {
         Usuario usuario = buscarUsuario(nome);
 
-        if(usuario.getNome()!= null){
+        if (usuario != null) {
 
-            if(usuario.getSenha().equals(senha)){
+            if (usuario.getSenha().equals(senha)) {
                 return usuario;
             }
         }
@@ -78,7 +78,17 @@ public class PersistenciaJSON {
         return null;
     }
 
-    public void cadastrarUsuario() {
+    public boolean cadastrarUsuario(Usuario novoUsuario) {
+        if (buscarUsuario(novoUsuario.getNome()) != null) {
+            return false;
+        }
 
+        List<Usuario> usuarios = carregarUsuarios();
+
+        usuarios.add(novoUsuario);
+
+        salvarUsuarios(usuarios);
+
+        return true;
     }
 }

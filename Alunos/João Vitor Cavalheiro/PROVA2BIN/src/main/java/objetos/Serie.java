@@ -2,6 +2,8 @@ package objetos;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Serie {
     private String nome;
     private String idioma;
@@ -102,6 +104,7 @@ public class Serie {
         this.emissora = emissora;
     }
 
+    @JsonIgnore
     public int getPrioridadeStatus() {
         if (status.equals("Running")) {
             return 1;
@@ -119,9 +122,34 @@ public class Serie {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Serie outraSerie = (Serie) obj;
+
+        return this.id == outraSerie.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(id);
+    }
+
+    @Override
     public String toString() {
-        return "emissora" + emissora + "/ dataEstreia" + dataEstreia +
-                "/ dataFim" + dataFim + "/ status" + status + "/ nota" + nota +
-                "/ genero" + generos + "/ nome" + nome + "/ idioma" + idioma;
+        return "Emissora:" + emissora +
+                "DataEstreia:" + dataEstreia +
+                "DataFim:" + dataFim +
+                "Status:" + status +
+                "Nota:" + nota +
+                "Gênero:" + generos +
+                "Nome:" + nome +
+                "Idioma:" + idioma;
     }
 }
