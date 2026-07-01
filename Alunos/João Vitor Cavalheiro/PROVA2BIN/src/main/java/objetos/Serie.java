@@ -102,6 +102,22 @@ public class Serie {
         this.emissora = emissora;
     }
 
+    public int getPrioridadeStatus() {
+        if (status.equals("Running")) {
+            return 1;
+        }
+
+        if (status.equals("Ended")) {
+            return 2;
+        }
+
+        if (status.equals("Canceled")) {
+            return 3;
+        }
+
+        return 4;
+    }
+
     @Override
     public String toString() {
         return "emissora" + emissora + "/ dataEstreia" + dataEstreia +
