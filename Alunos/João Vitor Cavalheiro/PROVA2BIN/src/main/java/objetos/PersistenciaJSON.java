@@ -51,13 +51,31 @@ public class PersistenciaJSON {
         }
     }
 
-    public void buscarUsuario() {
-        carregarUsuarios();
+    public Usuario buscarUsuario(String nome) {
+
+        List<Usuario> usuarios = carregarUsuarios();
+
+        for (Usuario usuario: usuarios) {
+            if(usuario != null){
+                return usuario;
+            }
+
+        }
+        return null;
         
     }
 
-    public void autenticar() {
+    public Usuario autenticar(String nome, String senha) {
+        Usuario usuario = buscarUsuario(nome);
 
+        if(usuario.getNome()!= null){
+
+            if(usuario.getSenha().equals(senha)){
+                return usuario;
+            }
+        }
+
+        return null;
     }
 
     public void cadastrarUsuario() {
